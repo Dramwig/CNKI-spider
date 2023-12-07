@@ -100,10 +100,13 @@ def crawl(driver, papers_need, theme):
             lines = file.readlines()
             last_line = lines[-1].strip()
             count = int(last_line.split("\t")[0]) + 1
-
+    
     for i in range(count // 20):
         # 切换到下一页
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//a[@id='PageNext']"))).click()
+        time.sleep(3)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='PageNext']"))).click()
+
+    print(f"从第 {count} 条开始爬取\n")
 
     # 当爬取数量小于需求时，循环网页页码
     while count <= papers_need:
@@ -245,6 +248,8 @@ def crawl(driver, papers_need, theme):
 
         # 切换到下一页
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//a[@id='PageNext']"))).click()
+        
+    print("爬取完毕！")
 
 
 if __name__ == "__main__":
@@ -253,13 +258,13 @@ if __name__ == "__main__":
     driver = webserver()
     
     # 设置所需篇数
-    papers_need = 100
+    papers_need = 500
     res_unm = open_page(driver, keyword)
     
     # 判断所需是否大于总篇数
     papers_need = papers_need if (papers_need <= res_unm) else res_unm
     
-    os.system("pause")
+    # os.system("pause")
     
     # 开始爬取
     crawl(driver, papers_need, keyword)
