@@ -10,6 +10,10 @@
 - 将提取的信息保存到指定文件中（在这种情况下是一个 TSV 文件）。
 - 异常处理以确保稳健性。
 
+## 讲述
+
+详见[知乎](https://zhuanlan.zhihu.com/p/670809708)或[博客](https://blog.wangzixi.top/2023/12/06/43/)。
+
 ## 使用方法
 
 ### 1. 环境设置
@@ -42,16 +46,14 @@ python CNKI_spider_paralle.py
 
 ### 4. 结果查看
 
-爬取的结果将保存在名为 `CNKI_关键词.tsv` 的 TSV 文件中（例如 `CNKI_青少年抑郁.tsv`）。您可以使用文本编辑器或适当的软件打开该文件查看爬取的论文信息。
-
-## 如何运行
-
-1. 克隆该存储库。
-2. 安装所需依赖项（`pip install -r requirements.txt`）。
-3. 使用指定的关键词和所需论文数量执行脚本（`python cnki_crawler.py`）。
-
+爬取的结果将保存在名为 `CNKI_关键词.tsv` 的 TSV 文件中（例如 `CNKI_青少年抑郁.tsv`）。您可以使用文本编辑器或Excel打开该文件查看爬取的论文信息。
 
 ## 注意事项
 
 - 该脚本配置了 Edge WebDriver，但可以根据需要更改 WebDriver 配置以适用于其他浏览器。
 - 确保遵守 CNKI 的服务条款，并避免对其服务器进行过多请求。
+
+## 参考
+
+- Python爬虫实战(5) | 爬取知网文献信息（已优化代码） https://zhuanlan.zhihu.com/p/599579339
+- 知网爬虫--根据【关键词】获取文献信息 https://zhuanlan.zhihu.com/p/663793038
