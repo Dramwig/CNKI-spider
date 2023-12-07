@@ -1,8 +1,3 @@
-'''
-    参考：
-        https://zhuanlan.zhihu.com/p/599579339
-        https://zhuanlan.zhihu.com/p/663793038
-'''
 
 import time
 import concurrent.futures
@@ -101,7 +96,7 @@ def crawl(driver, papers_need, theme):
             last_line = lines[-1].strip()
             count = int(last_line.split("\t")[0]) + 1
     
-    for i in range(count // 20):
+    for i in range((count-1) // 20):
         # 切换到下一页
         time.sleep(3)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='PageNext']"))).click()
@@ -117,7 +112,7 @@ def crawl(driver, papers_need, theme):
         # 循环网页一页中的条目
         for i in range((count-1) % 20 + 1, 21):
 
-            print(f"\n###正在爬取第 {count} 条(本页第{i}条)#######################################\n")
+            print(f"\n###正在爬取第 {count} 条(第{(count-1) // 20 + 1}页第{i}条)#######################################\n")
 
             try:
                 term = (count-1) % 20 + 1  # 本页的第几个条目
@@ -264,7 +259,7 @@ if __name__ == "__main__":
     # 判断所需是否大于总篇数
     papers_need = papers_need if (papers_need <= res_unm) else res_unm
     
-    # os.system("pause")
+    os.system("pause")
     
     # 开始爬取
     crawl(driver, papers_need, keyword)
