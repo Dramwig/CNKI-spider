@@ -253,7 +253,7 @@ if __name__ == "__main__":
     driver = webserver()
     
     # 设置所需篇数
-    papers_need = 500
+    papers_need = 2000
     res_unm = open_page(driver, keyword)
     
     # 判断所需是否大于总篇数
